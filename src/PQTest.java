@@ -45,7 +45,7 @@ public class PQTest {
 //        System.out.println(Objects.requireNonNull(pq.poll()).h);
 //        System.out.println(Objects.requireNonNull(pq.poll()).h);
 
-        System.out.println(coint(1));
+        System.out.println(coint(0));
 
 
     }
