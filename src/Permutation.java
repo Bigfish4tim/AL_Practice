@@ -20,7 +20,7 @@ public class Permutation {
 
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
+        int[] arr = {1, 2};
         int r = 2;
         permutation(arr, new int[r], new boolean[arr.length], 0, r);
 
