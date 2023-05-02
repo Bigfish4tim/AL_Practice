@@ -14,20 +14,21 @@ public class a123 {
         q.add(3);
         q.add(4);
 
-
         q.removeIf(integer -> integer == 1);
 
+//        Iterator<Integer> iter = q.iterator();
+//        while (iter.hasNext()) {
+//            if(iter.next() == 1) {
+//                iter.remove();
+//            }
+//        }
 
 
+        int x = 11;
 
-        Iterator<Integer> iter = q.iterator();
-        while (iter.hasNext()) {
-            if(iter.next() == 1) {
-                iter.remove();
-            }
-        }
+        x = (x+1)/2;
 
-
+        System.out.println(x);
 
 /*
 
