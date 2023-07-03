@@ -95,6 +95,139 @@ public class percent {
         }
     }
 
+    public static void math5(ArrayList<Integer> results) {
+        Random random = new Random();
+        for (int i=0; i< 10000; i++) {
+            int attempts = 0;
+            boolean gotA = false;
+            boolean gotB = false;
+            double alpha = 0;
+            int count = 0;
+
+            for (int j=0; j<140; j++) {
+                attempts++;
+                count++;
+                double r = random.nextDouble();
+
+                if (count>=45) {
+                    alpha += 0.00025 * (count-44);
+                }
+
+                if (!gotB) {
+                    if (count == 75) {
+                        double s = random.nextDouble();
+                        if (s < 0.5) {
+                            gotB = true;
+                        } else {
+                            gotA = true;
+                        }
+                        count = 0;
+                        alpha = 0;
+                    } else {
+                        if (r < 0.0075 + alpha) {
+                            gotA = true;
+                            count = 0;
+                            alpha = 0;
+                        }
+                        if (r < 0.015 + (2*alpha) && r >= 0.0075 + alpha) {
+                            gotB = true;
+                            count = 0;
+                            alpha = 0;
+                        }
+                    }
+                } else {
+                    if (count == 75) {
+                        gotA = true;
+                        count = 0;
+                        alpha = 0;
+                    } else {
+                        if (r < 0.015 + (2*alpha)) {
+                            gotA = true;
+                            count = 0;
+                            alpha = 0;
+                        }
+                    }
+
+                }
+
+                if (gotA) {
+                    results.add(attempts);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void math6(ArrayList<Integer> results) {
+        Random random = new Random();
+        for (int i=0; i< 10000; i++) {
+            int attempts = 0;
+            boolean gotA = false;
+            boolean gotB = false;
+            double alpha = 0;
+            int count = 0;
+            int sum = 0;
+
+            for (int j=0; j<100; j++) {
+                attempts++;
+                count++;
+                double r = random.nextDouble();
+
+                if (count>=45) {
+                    alpha += 0.00025 * (count-44);
+                }
+
+                if (!gotB) {
+                    if (count == 75) {
+                        double s = random.nextDouble();
+                        if (s < 0.5) {
+                            gotB = true;
+                        } else {
+                            gotA = true;
+                        }
+                        count = 0;
+                        alpha = 0;
+                    } else {
+                        if (r < 0.0075 + alpha) {
+                            gotA = true;
+                            count = 0;
+                            alpha = 0;
+                        }
+                        if (r < 0.015 + (2*alpha) && r >= 0.0075 + alpha) {
+                            gotB = true;
+                            count = 0;
+                            alpha = 0;
+                        }
+                    }
+                } else {
+                    if (count == 75) {
+                        gotA = true;
+                        count = 0;
+                        alpha = 0;
+                    } else {
+                        if (r < 0.015 + (2*alpha)) {
+                            gotA = true;
+                            count = 0;
+                            alpha = 0;
+                        }
+                    }
+
+                }
+
+                if (gotA) {
+                    sum++;
+                    gotA = false;
+                    gotB = false;
+                }
+
+                if (sum == 2) {
+                    results.add(attempts);
+                    break;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
 
@@ -102,23 +235,13 @@ public class percent {
         for(int i=0; i<20; i++) {
             ArrayList<Integer> results = new ArrayList<Integer>();
 //            math(results);
-            math3(results);
+//            math5(results);
+            math6(results);
 
             System.out.println((double) results.size()/10000);
         }
 
-        int a = 10;
-        int b = 3;
 
-        double c = (double) a/b;
-
-        System.out.println(c);
-
-        System.out.println(c+b);
-
-        if (c < a) {
-            System.out.println(11);
-        }
 
 //        math2(results);
 
