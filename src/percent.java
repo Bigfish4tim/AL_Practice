@@ -158,6 +158,44 @@ public class percent {
         }
     }
 
+    public static void math7(ArrayList<Integer> results) {
+        Random random = new Random();
+        for (int i=0; i< 10000; i++) {
+            int attempts = 0;
+            boolean gotA = false;
+            boolean gotB = false;
+            int count = 0;
+
+            for (int j=0; j<140; j++) {
+                attempts++;
+                count++;
+                double r = random.nextDouble();
+
+                if (!gotB) {
+                    if (r < 0.0125) {
+                        gotA = true;
+                        count = 0;
+                    }
+                    if (r < 0.025 && r >= 0.0125) {
+                        gotB = true;
+                        count = 0;
+                    }
+                } else {
+                    if (r < 0.025) {
+                        gotA = true;
+                        count = 0;
+                    }
+                }
+
+                if (gotA) {
+                    results.add(attempts);
+                    break;
+                }
+            }
+        }
+    }
+
+
     public static void math6(ArrayList<Integer> results) {
         Random random = new Random();
         for (int i=0; i< 10000; i++) {
@@ -168,7 +206,7 @@ public class percent {
             int count = 0;
             int sum = 0;
 
-            for (int j=0; j<100; j++) {
+            for (int j=0; j<260; j++) {
                 attempts++;
                 count++;
                 double r = random.nextDouble();
@@ -230,15 +268,19 @@ public class percent {
 
     public static void main(String[] args) {
 
-
-
         for(int i=0; i<20; i++) {
             ArrayList<Integer> results = new ArrayList<Integer>();
 //            math(results);
-//            math5(results);
-            math6(results);
+            math5(results);
+//            math6(results);
 
             System.out.println((double) results.size()/10000);
+
+//            int sum = 0;
+//            for (Integer result : results) {
+//                sum += result;
+//            }
+//            System.out.println(sum / 10000);
         }
 
 
