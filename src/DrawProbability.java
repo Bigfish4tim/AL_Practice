@@ -1,52 +1,44 @@
-import java.util.Random;
-
 public class DrawProbability {
     public static void main(String[] args) {
-        int totalSimulations = 150;  // 총 시뮬레이션 횟수
-        int targetCount = 2;  // 목표로 하는 A 뽑기 횟수
-        int successCount = 0;  // 성공한 시뮬레이션 횟수
+        int totalTrials = 200;
+        int countA = 0;
+        boolean pickedB = false;
 
-        // 시뮬레이션 반복
-        for (int i = 0; i < totalSimulations; i++) {
-            int drawCount = 0;  // 뽑기 횟수
-            int aCount = 0;  // A 뽑기 횟수
-
-            while (drawCount < 75 || (drawCount < 150 && aCount < targetCount)) {
-                // 뽑기 실행
-                if (drawCount >= 45) {
-                    double currentProbability = 0.015 + ((drawCount - 44) * 0.005);
-                    if (Math.random() < currentProbability) {
-                        // 당첨 시 A 또는 B 뽑기
-                        if (aCount < targetCount) {
-                            aCount++;
-                        } else {
-                            aCount = 1;
-                        }
+        for (int i = 1; i <= totalTrials; i++) {
+            if (i == 75 && !pickedB) {
+                // 74번째 뽑기까지 A나 B를 뽑지 못했고 이미 B를 뽑지 않은 상태라면 75번째에서 A 뽑기
+                countA++;
+            } else {
+                double probability = getProbability(i, pickedB);
+                if (Math.random() <= probability) {
+                    countA++;
+                    if (pickedB) {
+                        // 이미 B를 뽑은 상태라면 A를 뽑을 확률 0.5%씩 증가
+                        probability += 0.005;
                     }
-                } else {
-                    if (Math.random() < 0.015) {
-                        // 당첨 시 A 또는 B 뽑기
-                        if (aCount < targetCount) {
-                            aCount++;
-                        } else {
-                            aCount = 1;
-                        }
+                    if (Math.random() <= probability) {
+                        countA++;
+                        break; // A를 두 번 뽑았으므로 종료
                     }
                 }
-
-                drawCount++;
-            }
-
-            // 목표 달성 시 성공한 시뮬레이션 횟수 증가
-            if (aCount == targetCount) {
-                successCount++;
             }
         }
 
-        // 성공 확률 계산
-        double successProbability = (double) successCount / totalSimulations;
+        double probabilityA = (double) countA / totalTrials;
+        System.out.println("A를 두 번 뽑을 확률: " + probabilityA);
+    }
 
-        // 결과 출력
-        System.out.println("A를 " + targetCount + "회 뽑을 확률: " + successProbability);
+    public static double getProbability(int trial, boolean pickedB) {
+        if (trial <= 44) {
+            return 0.0075; // 초기 확률 0.75%
+        } else if (trial <= 74) {
+            if (pickedB) {
+                return 0.0125; // 이미 B를 뽑은 상태에서는 A 뽑을 확률 1%
+            } else {
+                return 0.015; // B를 뽑은 후 A 뽑을 확률 1.5%
+            }
+        } else {
+            return 0.0025 + (0.0025 * (trial - 74)); // 75번째부터는 A나 B 뽑을 확률 0.25%씩 증가
+        }
     }
 }
