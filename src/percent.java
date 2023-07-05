@@ -104,13 +104,13 @@ public class percent {
             double alpha = 0;
             int count = 0;
 
-            for (int j=0; j<100; j++) {
+            for (int j=0; j<140; j++) {
                 attempts++;
                 count++;
                 double r = random.nextDouble();
 
                 if (count>=45) {
-                    alpha += 0.00025 * (count-44);
+                    alpha = 0.00025 * (count-44);
                 }
 
                 if (!gotB) {
@@ -212,7 +212,7 @@ public class percent {
                 double r = random.nextDouble();
 
                 if (count>=45) {
-                    alpha += 0.00025 * (count-44);
+                    alpha = 0.00025 * (count-44);
                 }
 
                 if (!gotB) {
@@ -271,16 +271,16 @@ public class percent {
         for(int i=0; i<20; i++) {
             ArrayList<Integer> results = new ArrayList<Integer>();
 //            math(results);
-            math5(results);
-//            math6(results);
+//            math5(results);
+            math6(results);
 
             System.out.println((double) results.size()/10000);
 
-            int sum = 0;
-            for (Integer result : results) {
-                sum += result;
-            }
-            System.out.println(sum / 10000);
+//            int sum = 0;
+//            for (Integer result : results) {
+//                sum += result;
+//            }
+//            System.out.println(sum / 10000);
         }
 
 
