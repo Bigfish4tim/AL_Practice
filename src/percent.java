@@ -164,26 +164,26 @@ public class percent {
             int attempts = 0;
             boolean gotA = false;
             boolean gotB = false;
+            double alpha = 0;
             int count = 0;
 
-            for (int j=0; j<140; j++) {
+            for (int j=0; j<75; j++) {
                 attempts++;
                 count++;
                 double r = random.nextDouble();
 
-                if (!gotB) {
-                    if (r < 0.0125) {
-                        gotA = true;
-                        count = 0;
-                    }
-                    if (r < 0.025 && r >= 0.0125) {
-                        gotB = true;
-                        count = 0;
-                    }
+                if (count>=45) {
+                    alpha = 0.0025 * (count-44);
+                }
+                if (count == 75) {
+                    gotA = true;
+                    count = 0;
+                    alpha = 0;
                 } else {
-                    if (r < 0.025) {
+                    if (r < 0.015 + (2*alpha)) {
                         gotA = true;
                         count = 0;
+                        alpha = 0;
                     }
                 }
 
@@ -273,6 +273,7 @@ public class percent {
 //            math(results);
             math5(results);
 //            math6(results);
+//            math7(results);
 
             System.out.println((double) results.size()/10000);
 
