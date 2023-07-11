@@ -102,9 +102,9 @@ public class percent {
             boolean gotA = false;
             boolean gotB = false;
             double alpha = 0;
-            int count = 0;
+            int count = 43;
 
-            for (int j=0; j<150; j++) {
+            for (int j=0; j<70; j++) {
                 attempts++;
                 count++;
                 double r = random.nextDouble();
@@ -274,6 +274,7 @@ public class percent {
             math5(results);
 //            math6(results);
 //            math7(results);
+
 
             System.out.println((double) results.size()/10000);
 
