@@ -97,24 +97,27 @@ public class percent {
 
     public static void math5(ArrayList<Integer> results) {
         Random random = new Random();
+
         for (int i=0; i< 10000; i++) {
             int attempts = 0;
             boolean gotA = false;
             boolean gotB = false;
             double alpha = 0;
-            int count = 43;
+            int count = 0;
 
-            for (int j=0; j<113; j++) {
+            int total = 0;
+
+            for (int j=0; j<200; j++) {
                 attempts++;
                 count++;
                 double r = random.nextDouble();
 
-                if (count>=45) {
-                    alpha = 0.0025 * (count-44);
+                if (count>=60) {
+                    alpha = 0.0075 * (count-59);
                 }
 
                 if (!gotB) {
-                    if (count == 75) {
+                    if (count == 70) {
                         double s = random.nextDouble();
                         if (s < 0.5) {
                             gotB = true;
@@ -136,7 +139,7 @@ public class percent {
                         }
                     }
                 } else {
-                    if (count == 75) {
+                    if (count == 70) {
                         gotA = true;
                         count = 0;
                         alpha = 0;
@@ -151,6 +154,12 @@ public class percent {
                 }
 
                 if (gotA) {
+                    total++;
+                    gotA = false;
+                    gotB = false;
+                }
+
+                if (total==2) {
                     results.add(attempts);
                     break;
                 }
@@ -194,7 +203,6 @@ public class percent {
             }
         }
     }
-
 
     public static void math6(ArrayList<Integer> results) {
         Random random = new Random();
@@ -286,6 +294,24 @@ public class percent {
 //        results.sort(null);
 //        int index = (int) (0.90 * results.size());
 //        System.out.println("90th percentile: " + results.get(index));
+
+//        // 두 점의 좌표를 입력합니다.
+//        double x1 = 0.0;
+//        double y1 = 0.0;
+//        double x2 = 1.0;
+//        double y2 = 0.0;
+//
+//        // 각도를 계산합니다.
+//        double angleRadians = Math.atan2(y2 - y1, x2 - x1);
+//        double angleDegrees = Math.toDegrees(angleRadians - Math.PI/4);
+//
+//        if (angleDegrees < 0) {
+//            angleDegrees = 360 + angleDegrees;
+//        }
+//
+//        // 결과를 출력합니다.
+//        System.out.println("두 점 사이의 각도 (라디안): " + angleRadians);
+//        System.out.println("두 점 사이의 각도 (도): " + angleDegrees);
     }
 }
 
