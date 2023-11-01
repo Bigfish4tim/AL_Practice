@@ -112,8 +112,8 @@ public class percent {
                 count++;
                 double r = random.nextDouble();
 
-                if (count>=60) {
-                    alpha = 0.0075 * (count-59);
+                if (count>=61) {
+                    alpha = 0.0125 * (count-60);
                 }
 
                 if (!gotB) {
