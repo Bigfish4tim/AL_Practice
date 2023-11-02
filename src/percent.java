@@ -288,7 +288,10 @@ public class percent {
                 sum += result;
             }
             System.out.println(sum / 10000);
+
+
         }
+
 //        math2(results);
 
 //        results.sort(null);
