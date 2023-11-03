@@ -107,7 +107,7 @@ public class percent {
 
             int total = 0;
 
-            for (int j=0; j<200; j++) {
+            for (int j=0; j<193; j++) {
                 attempts++;
                 count++;
                 double r = random.nextDouble();
@@ -159,7 +159,7 @@ public class percent {
                     gotB = false;
                 }
 
-                if (total==2) {
+                if (total==3) {
                     results.add(attempts);
                     break;
                 }
