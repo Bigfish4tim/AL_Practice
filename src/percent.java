@@ -289,7 +289,6 @@ public class percent {
             }
             System.out.println(sum / 10000);
 
-
         }
 
 //        math2(results);
