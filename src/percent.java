@@ -104,7 +104,6 @@ public class percent {
             boolean gotB = false;
             double alpha = 0;
             int count = 0;
-
             int total = 0;
 
             for (int j=0; j<193; j++) {
