@@ -290,7 +290,6 @@ public class percent {
 
         }
 
-//        math2(results);
 
 //        results.sort(null);
 //        int index = (int) (0.90 * results.size());
